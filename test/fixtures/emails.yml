@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: MyString
+  from: MyString
+  to: MyString
+  subject: MyText
+  html_body: MyText
+  text_body: MyText
+  read: false
+
+two:
+  id: MyString
+  from: MyString
+  to: MyString
+  subject: MyText
+  html_body: MyText
+  text_body: MyText
+  read: false

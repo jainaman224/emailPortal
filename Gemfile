@@ -62,3 +62,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "mailman", "~> 0.7.0"
+
+gem 'will_paginate'
+
+gem 'bootstrap', '~> 4.1.1'

@@ -2,6 +2,7 @@
 require "rubygems"
 require "bundler/setup"
 require "mailman"
+require 'date'
 
 Mailman.config.logger = Logger.new("log/mailman.log")
 Mailman.config.poll_interval = 60
@@ -16,8 +17,6 @@ Mailman.config.pop3 = {
 Mailman::Application.run do
   default do
     begin
-      p "Found a new message"
-
       if message.multipart?
         the_message_html = message.html_part.body.decoded
         the_message_text = message.text_part.body.decoded
@@ -36,6 +35,19 @@ Mailman::Application.run do
         the_message_html = message.body.decoded
         the_message_text = message.body.decoded
         the_message_attachments = []
+      end
+
+      if !Email.where(message_id: message.message_id).exists?
+        Email.create(
+          :message_id => message.message_id,
+          :from => message.from.first,
+          :to => message.to.first,
+          :subject => message.subject,
+          :html_body => the_message_html,
+          :text_body => the_message_text,
+          :date => message.date,
+          :read => false
+        )
       end
 
     rescue Exception => e

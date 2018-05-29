@@ -1,0 +1,48 @@
+<h1 class="center">All Emails</h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2">
+      Date
+    </div>
+    <div class="col">
+      Subject
+    </div>
+    <div class="col">
+      From
+    </div>
+    <div class="col-4">
+      Body
+    </div>
+    <div class="col-2">
+    </div>
+  </div>
+<% @emails.each do |email| %>
+  <div class="row border border-secondary rounded"
+    <% if email.read -%>
+      style="background: #D3D3D3"
+    <% end -%>
+  >
+    <div class="col-2">
+      <%= email.date %>
+    </div>
+    <div class="col">
+      <%= truncate(email.subject, :length => 80) %>
+    </div>
+    <div class="col">
+      <%= truncate(email.from, :length => 50) %>
+    </div>
+    <div class="col-4">
+      <%= truncate(email.text_body, :length => 120) %>
+    </div>
+    <div class="col-2">
+      <%= link_to 'Show', email %>
+      <%= link_to 'Destroy', email, method: :delete %>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<br />
+
+<%= will_paginate @emails %>
