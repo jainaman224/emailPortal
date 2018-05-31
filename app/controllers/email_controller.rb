@@ -9,9 +9,23 @@ class EmailController < ApplicationController
     @email.save
   end
 
+  def new
+    @email = Email.new
+  end
+
+  def create
+    EmailerMailer.with(details: email_params.as_json).send_email.deliver_later
+    redirect_to :action => 'index'
+  end
+
   def destroy
     @email = Email.find(params[:id])
     @email.destroy
     redirect_to :action => 'index'
+  end
+
+  private
+  def email_params
+    params.require(:email).permit(:to, :subject, :text_body)
   end
 end

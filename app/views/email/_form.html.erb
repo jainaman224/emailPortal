@@ -1,0 +1,22 @@
+<%= form_with scope: :email, url: {action: 'create'}, id: 'email' do |form| %>
+
+  <p>
+    <%= form.label :to %><br>
+    <%= form.text_field :to %>
+  </p>
+
+  <p>
+    <%= form.label :subject %><br>
+    <%= form.text_field :subject %>
+  </p>
+
+  <p>
+    <%= form.label :text_body %><br>
+    <%= form.text_area :text_body %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
