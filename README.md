@@ -1,24 +1,52 @@
-# README
+# EmailPortal
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It is an portal for email management at our server. It fetches email from your email client and show on your dashboard. You can also send email from the same portal.
 
-Things you may want to cover:
+## Dependencies
 
-* Ruby version
+**NOTE** It is not supported on ruby 2.5.x due to [this](https://github.com/mikel/mail/issues/1209).
 
-* System dependencies
+Ruby version: 2.4.4
+Rails version: 5.2.0
 
-* Configuration
+It is recommended to install ruby using [RVM](https://rvm.io).
 
-* Database creation
+## How to run
 
-* Database initialization
+Clone the project.
 
-* How to run the test suite
+> git clone https://github.com/jainaman224/emailPortal.git
 
-* Services (job queues, cache servers, search engines, etc.)
+Then move to project using
 
-* Deployment instructions
+> cd emailPortal
 
-* ...
+To install all dependencies use
+
+> bundle install
+
+Then set environment variable using
+
+> export GMAIL_PASSWORD=`<PASS>`
+
+> export GMAIL_USERNAME=`<USERNAME>`
+
+Then run mailman script in one terminal using
+
+> ruby script/mailman_server
+
+and finally run main server on another terminal as
+
+> bin/rails server
+
+## TODO
+
+1. Support for multiple email clients.
+2. Account and User implementation.
+3. Reply to same thread using in-reply: <message-id> in header.
+4. Run `mailman_server` from main server.
+5. Get unread information from email client.
+
+## Contributors
+
+Aman Jain (jainaman224)
