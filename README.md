@@ -27,9 +27,13 @@ To install all dependencies use
 
 Then set environment variable using
 
-> export GMAIL_PASSWORD=`<PASS>`
+> export EMAIL_ID=`<USERNAME>`
 
-> export GMAIL_USERNAME=`<USERNAME>`
+> export EMAIL_PASSWORD=`<PASS>`
+
+To use outlook
+
+> export EMAIL_CLIENT='outlook'
 
 Then run mailman script in one terminal using
 
@@ -46,6 +50,8 @@ and finally run main server on another terminal as
 3. Reply to same thread using in-reply: <message-id> in header.
 4. Run `mailman_server` from main server.
 5. Get unread information from email client.
+6. Support for attachments.
+7. Support for html_body.
 
 ## Contributors
 

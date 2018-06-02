@@ -59,13 +59,36 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.emailServer = {
+    smtp: {
+      gmail: "smtp.gmail.com",
+      outlook: "smtp-mail.outlook.com"
+    },
+    pop: {
+      gmail: "pop.gmail.com",
+      outlook: "pop-mail.outllok.com"
+    },
+    imap: {
+      gmail: "imap.gmail.com",
+      outlook: "imap-mail.outlook.com"
+    }
+  }
+
   config.action_mailer.delivery_method = :smtp
+
+  if ENV["EMAIL_CLIENT"] && config.emailServer[:smtp].key?(ENV["EMAIL_CLIENT"].to_sym)
+    smtpServer = config.emailServer[:smtp][ENV["EMAIL_CLIENT"].to_sym]
+  else
+    smtpServer = config.emailServer[:smtp][:gmail]
+  end
+
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    address:              smtpServer,
     port:                 587,
-    domain:               'example.com',
-    user_name:            ENV['GMAIL_USERNAME'],
-    password:             ENV['GMAIL_PASSWORD'],
-    authentication:       'plain',
-    enable_starttls_auto: true }
+    domain:               "example.com",
+    user_name:            ENV["EMAIL_ID"],
+    password:             ENV["EMAIL_PASSWORD"],
+    authentication:       "plain",
+    enable_starttls_auto: true
+  }
 end
