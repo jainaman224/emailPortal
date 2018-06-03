@@ -25,19 +25,9 @@ To install all dependencies use
 
 > bundle install
 
-Then set environment variable using
+Run sidekiq as a separate process
 
-> export EMAIL_ID=`<USERNAME>`
-
-> export EMAIL_PASSWORD=`<PASS>`
-
-To use outlook
-
-> export EMAIL_CLIENT='outlook'
-
-Then run mailman script in one terminal using
-
-> ruby script/mailman_server
+> bundle exec sidekiq
 
 and finally run main server on another terminal as
 
@@ -45,14 +35,13 @@ and finally run main server on another terminal as
 
 ## TODO
 
-1. Support for multiple email clients.
-2. Account and User implementation.
-3. Reply to same thread using in-reply: <message-id> in header.
-4. Run `mailman_server` from main server.
-5. Get unread information from email client.
-6. Support for attachments.
-7. Support for html_body.
-8. Validator for email.
+1. Reply to same thread using in-reply: <message-id> in header.
+2. Get unread information from email client.
+3. Support for attachments.
+4. Support for html_body.
+5. Exception Handling.
+6. Proper job queue management.
+7. Password Encryption Fix.
 
 ## Contributors
 

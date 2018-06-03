@@ -15,7 +15,7 @@ class EmailController < ApplicationController
   end
 
   def create
-    EmailerMailer.with(details: email_params.as_json).send_email.deliver_later
+    EmailerMailer.with(details: email_params.as_json).send_email(session[:account_id]).deliver_later
     redirect_to :action => 'index'
   end
 

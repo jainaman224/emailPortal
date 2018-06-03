@@ -23,7 +23,6 @@ class SessionController < ApplicationController
       account = authorized_user.account.first
 
       if not session[:account_id].nil?
-        puts account.client
         HardWorker.perform_async(account.id, account.email_id, account.password, account.client)
       end
 

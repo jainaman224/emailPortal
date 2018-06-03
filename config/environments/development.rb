@@ -75,20 +75,4 @@ Rails.application.configure do
   }
 
   config.action_mailer.delivery_method = :smtp
-
-  if ENV["EMAIL_CLIENT"] && config.emailServer[:smtp].key?(ENV["EMAIL_CLIENT"].to_sym)
-    smtpServer = config.emailServer[:smtp][ENV["EMAIL_CLIENT"].to_sym]
-  else
-    smtpServer = config.emailServer[:smtp][:gmail]
-  end
-
-  config.action_mailer.smtp_settings = {
-    address:              smtpServer,
-    port:                 587,
-    domain:               "example.com",
-    user_name:            ENV["EMAIL_ID"],
-    password:             ENV["EMAIL_PASSWORD"],
-    authentication:       "plain",
-    enable_starttls_auto: true
-  }
 end
