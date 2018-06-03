@@ -1,4 +1,4 @@
-<%= form_with scope: :email, url: {action: 'create'}, id: 'email' do |form| %>
+<%= form_with scope: :email, url: {controller: :email, action: 'create'}, id: 'email' do |form| %>
 
   <p>
     <%= form.label :to %><br>

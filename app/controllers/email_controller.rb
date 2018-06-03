@@ -1,10 +1,11 @@
 class EmailController < ApplicationController
+  before_action :authenticate_user
+
   def index
-    @emails = Email.paginate(:page => params[:page], :per_page => 30).order('date DESC')
+    @emails = Email.where(account_id: session[:account_id]).paginate(:page => params[:page], :per_page => 30).order('date DESC')
   end
 
   def show
-    @email = Email.find(params[:id])
     @email.read = true
     @email.save
   end
@@ -19,12 +20,15 @@ class EmailController < ApplicationController
   end
 
   def destroy
-    @email = Email.find(params[:id])
     @email.destroy
     redirect_to :action => 'index'
   end
 
   private
+  def set_email
+    @email = Email.where(account_id: session[:account_id]).find(params[:id])
+  end
+
   def email_params
     params.require(:email).permit(:to, :subject, :text_body)
   end

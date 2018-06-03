@@ -1,0 +1,22 @@
+<%= form_with scope: :account, url: {controller: :account, action: 'create'}, id: 'account' do |form| %>
+
+  <p>
+    <%= form.label :email_id %><br>
+    <%= form.text_field :email_id %>
+  </p>
+
+  <p>
+    <%= form.label :password %><br>
+    <%= form.text_field :password %>
+  </p>
+
+  <p>
+    <%= form.label :client %><br>
+    <%= form.text_area :client %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>

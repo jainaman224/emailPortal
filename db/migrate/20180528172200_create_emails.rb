@@ -8,7 +8,8 @@ class CreateEmails < ActiveRecord::Migration[5.2]
       t.text :html_body
       t.text :text_body
       t.datetime :date
-      t.boolean :read
+      t.boolean :read, default: false
+      t.belongs_to :account
 
       t.timestamps
     end

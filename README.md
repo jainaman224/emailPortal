@@ -52,6 +52,7 @@ and finally run main server on another terminal as
 5. Get unread information from email client.
 6. Support for attachments.
 7. Support for html_body.
+8. Validator for email.
 
 ## Contributors
 

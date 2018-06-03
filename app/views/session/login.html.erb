@@ -1,0 +1,8 @@
+<div class= "Sign_Form">
+  <h1>Log in</h1>
+  <%= form_for :session, url: {controller: :session, action: 'login_attempt'} do |f| %>
+    <p> Username:</br> <%= f.text_field :username %> </p>
+    <p> Password:</br> <%= f.password_field :password %></p>
+    <%= f.submit :Login %>
+  <% end %>
+</div>

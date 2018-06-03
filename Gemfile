@@ -66,3 +66,7 @@ gem "mailman", "~> 0.7.0"
 gem 'will_paginate'
 
 gem 'bootstrap', '~> 4.1.1'
+
+gem 'bcrypt-ruby', :require => 'bcrypt'
+
+gem 'sidekiq'
