@@ -23,4 +23,4 @@
   <%= @email.text_body %>
 </p>
 
-<%= link_to 'Back', :back %>
+<%= link_to 'Add Account', {controller: :account, action: :new} %> | <%= link_to 'Logout', {controller: :session, action: :logout} %> | <%= link_to 'Back', :back %>

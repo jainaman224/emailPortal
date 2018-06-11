@@ -7,7 +7,12 @@ class AccountController < ApplicationController
 
   def index
     @accounts = Account.where(user_id: @current_user.id)
-    @active = Account.find(session[:account_id])
+
+    if @accounts.empty?
+      redirect_to action: :new
+    else
+      @active = Account.find(session[:account_id])
+    end
   end
 
   # TODO: Scope limited to user of account.
@@ -18,7 +23,7 @@ class AccountController < ApplicationController
   def create
     @account = @current_user.account.create(account_params)
     HardWorker.perform_async(@account)
-    redirect_to :action => 'show'
+    redirect_to controller: :email, action: :index
   end
 
   def destroy

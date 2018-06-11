@@ -1,1 +1,3 @@
 <h2 class='User_Header'> <%= @current_user.username %> Profile <h2>
+
+<%= link_to 'Add Account', {controller: :account, action: :new} %> | <%= link_to 'Logout', {controller: :session, action: :logout} %>

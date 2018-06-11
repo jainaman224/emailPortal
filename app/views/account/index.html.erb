@@ -7,3 +7,7 @@
 </ul>
 
 Active: <%= @active.email_id %>
+
+<br />
+
+<%= link_to 'Inbox', {controller: :email, action: :index} %> | <%= link_to 'Add account', {action: :new} %> | <%= link_to 'Logout', {controller: :session, action: :logout} %>

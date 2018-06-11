@@ -2,4 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Back', :back %>
+<br />
+
+<%= link_to 'Add Account', {controller: :account, action: :new} %> | <%= link_to 'Logout', {controller: :session, action: :logout} %> | <%= link_to 'Back', :back %>

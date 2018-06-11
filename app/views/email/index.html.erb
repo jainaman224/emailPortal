@@ -46,3 +46,7 @@
 <br />
 
 <%= will_paginate @emails %>
+
+<br />
+
+<%= link_to 'Add Account', {controller: :account, action: :new} %> | <%= link_to 'Compose', {action: :new} %> | <%= link_to 'Logout', {controller: :session, action: :logout} %>

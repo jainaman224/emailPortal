@@ -1,1 +1,5 @@
 <h2 class='User_Header'> <%= @account.email_id %> <h2>
+
+<br />
+
+<%= link_to 'Inbox', {controller: :email, action: :index} %> | <%= link_to 'Add Account', {action: :new} %> | <%= link_to 'Logout', {controller: :session, action: :logout} %> | <%= link_to 'Back', :back %>

@@ -6,6 +6,7 @@ class SessionController < ApplicationController
   end
 
   def logout
+    flash[:success] = "Logged out successfully"
     session[:user_id] = nil
     redirect_to :action => 'login'
   end
@@ -26,11 +27,10 @@ class SessionController < ApplicationController
         HardWorker.perform_async(account.id, account.email_id, account.password, account.client)
       end
 
-      flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.username}"
-      redirect_to :action => "profile"
+      flash[:success] = "Welcome again, you logged in as #{authorized_user.username}"
+      redirect_to :controller => 'account', :action => "index"
     else
-      flash[:notice] = "Invalid Username or Password"
-      flash[:color]= "invalid"
+      flash[:danger] = "Invalid Username or Password"
       redirect_to :action => 'login'
     end
   end

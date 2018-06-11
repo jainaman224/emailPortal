@@ -1,7 +1,7 @@
 class UserController < ApplicationController
   before_action :save_login_state, :only => [:new, :create]
 
-  def new
+  def signup
     @user = User.new
   end
 
@@ -9,13 +9,11 @@ class UserController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:notice] = "You signed up successfully"
-      flash[:color]= "valid"
+      flash[:success] = "You signed up successfully"
       redirect_to :controller => 'session', :action => 'login'
     else
-      flash[:notice] = "Form is invalid"
-      flash[:color] = "invalid"
-      redirect_to :action => 'new'
+      flash[:danger] = "Invalid form"
+      render action: 'signup'
     end
   end
 
